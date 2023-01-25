@@ -13,11 +13,20 @@ const inputAge = document.getElementById("userAgeIns");
 console.log("età ", inputAge);
 
 
+//ELEMENTI DI OUTPUT
+//name
+const outputName = document.getElementById("stamp_name");
+//Ticket code
+const outputCode = document.getElementById("stamp_code");
+//Ticket price
+const finalTicketoutput = document.getElementById("stamp_price");
+
+
 mybutton.addEventListener("click", function () {
     //Sulla base di queste informazioni dovrà calcolare il prezzo totale del biglietto di viaggio, secondo le seguenti regole:
     //Il prezzo del biglietto è definito in base ai km(0.21 € al km)
-    const outputName = inputuserName.value;
-    console.log("nome output ", outputName);
+    const inserimento = inputuserName.value;
+    console.log("nome output ", inserimento);
 
     //età utente
     const userAge = inputAge.value;
@@ -27,7 +36,8 @@ mybutton.addEventListener("click", function () {
     const userKM = inputKM.value;
     console.log("km output ", userKM);
 
-
+    //ticket code
+    let ticketcode = Math.floor(Math.random() * 1000) + 1;
 
     const priceKM = .21;
     let priceTicket = userKM * priceKM;
@@ -45,7 +55,8 @@ mybutton.addEventListener("click", function () {
         priceTicket = priceTicket - priceDiscountU18;
         console.log("prezzo scontato under è ", priceTicket);
 
-        finalTicket = "Il prezzo del biglietto sarà di € ", priceTicket.toFixed(2);
+        finalTicket = `Il prezzo del biglietto sarà di € ${priceTicket.toFixed(2)}`;
+        console.log("bigkietto ", finalTicket);
     }
 
     //Va applicato uno sconto del 40 % per gli over 65.
@@ -58,29 +69,23 @@ mybutton.addEventListener("click", function () {
         priceTicket = priceTicket - priceDiscountO65;
         console.log("prezzo scontato over è ", priceTicket);
 
-        finalTicket = "Il prezzo del biglietto sarà di € ", priceTicket.toFixed(2);
-
+        finalTicket = `Il prezzo del biglietto sarà di € ${priceTicket.toFixed(2)}`;
+        console.log("bigkietto ", finalTicket);
     }
 
     //Altrimenti nessun sconto
     else (18 > userAge > 65); {
 
-        finalTicket = "Il prezzo del biglietto sarà di € ", priceTicket.toFixed(2);
+        finalTicket = `Il prezzo del biglietto sarà di € ${priceTicket.toFixed(2)}`;
+        console.log("bigkietto ", finalTicket);
 
     }
-
-
-
     finalTicketoutput.innerHTML = finalTicket;
+    outputCode.innerHTML = "Il codice del biglietto è " + ticketcode;
+    outputName.innerHTML = "Il tuo nome è " + inserimento;
 
 }
 )
 
 
-//ELEMENTI DI OUTPUT
-//name
-outputName = document.getElementById("stamp_name");
-//Ticket code
-const outputCode = document.getElementById("stamp_code");
-//Ticket price
-const finalTicketoutput = document.getElementById("stamp_price");
+
